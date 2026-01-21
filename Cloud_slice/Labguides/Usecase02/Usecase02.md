@@ -1,46 +1,26 @@
 # Use Case 2 - Use Graph for advanced relationship analysis in Fabric IQ
 
 **Introduction**
-
-A retail enterprise manages large volumes of interconnected data across
-customers, products, suppliers, and sales transactions. While
-traditional relational analysis helps answer straightforward questions,
-it becomes challenging to **understand complex relationships**, such as
-how customers are indirectly connected through shared purchasing
-behavior, how products relate to suppliers, or how entities influence
-one another across multiple hops.
-
-To address this challenge, the organization adopts **Graph capabilities
-in Microsoft Fabric**. By modeling business entities as **nodes** and
-their interactions as **relationships**, the data team can visually and
-analytically explore connections that were previously difficult to
-identify. Using Microsoft Fabric Graph, the team builds a graph model
-from existing data stored in OneLake and runs graph queries to uncover
-hidden patterns, relationship paths, and dependencies.
-
-This scenario enables analysts and data engineers to move beyond tabular
-analysis and gain **relationship-driven insights**, supporting better
-decision-making in areas such as customer behavior analysis, supplier
-impact assessment, and product relationship discovery.
+Modern retail enterprises manage highly interconnected data across customers, orders, products, employees, and vendors. While traditional relational analytics can answer direct questions, it often falls short when exploring complex, multi-hop relationships—such as understanding how customers are indirectly connected through shared purchases, how vendors influence product demand, or how product hierarchies impact sales patterns.
+To overcome these limitations, this use case demonstrates how Graph capabilities in Microsoft Fabric IQ can be used to model business entities as nodes and their interactions as edges. By transforming relational data stored in OneLake into a graph model, analysts and data engineers can visually explore and query relationships that are difficult to uncover using tabular approaches. This relationship-centric analysis enables deeper insights into customer behavior, supplier dependencies, and product ecosystems, ultimately supporting smarter, data-driven decisions.Objective
 
 **Objective**
 
-- Set up a graph model in Microsoft Fabric- Learn how to create a graph
-  item within a Fabric workspace.
+-Create and configure a Microsoft Fabric workspace suitable for graph analytics
 
-- Ingest data from OneLake into the graph- Connect and load source
-  tables to be used in the graph structure.
+-Build a Lakehouse and ingest structured retail data from OneLake
 
-- Define nodes and edges- Map source data tables to graph nodes
-  (entities) and edges (relationships) to represent real-world
-  connections.
+-Create a Graph model in Microsoft Fabric IQ
 
-- Load and validate the graph- Save the model to construct and prepare
-  the graph for querying.
+-Define nodes to represent core business entities such as customers, products, orders, vendors, and employees
 
-- Query the graph interactively or with GQL- Use the built-in query
-  builder or the GQL language to explore and extract insights from
-  relationships in the graph
+-Define edges to model real-world relationships between these entities
+
+-Load and validate the graph for analysis
+
+-Query the graph using both the Query Builder and Graph Query Language (GQL)
+
+-Discover complex relationship patterns that go beyond traditional SQL-based analysis
 
 ## Task 1: Create a Fabric workspace
 
@@ -57,7 +37,14 @@ incorrect.](./media/image1.png)
 2.  In the **Create a workspace** pane that appears on the right side,
     enter the following details, and click on the **Apply** button.
 
-[TABLE]
+  |  |   |
+  |---|---|
+  |Property|	Value|
+  |Name	|+++Fabric_GraphXXX+++ (XXXmust be a unique Id)|
+  |Advanced	|Under License mode, select Fabric capacity|
+  |Default| storage format	Small dataset storage format|
+  |Template apps|	Check the Develop template apps|
+
 
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image2.png)
@@ -118,7 +105,7 @@ incorrect.](./media/image10.png)
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image11.png)
 
-2.  On the Upload files tab, click on the folder under the Files
+2.  On the **Upload files** tab, click on the folder under the Files
 
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image12.png)
@@ -155,20 +142,18 @@ incorrect.](./media/image17.png)
 
 3.  Update the code in the **cell** with the following code and click
     on **Run cell** that appears to the left of the cell upon hover.
-
-> import zipfile
->
-> import os
->
-> zip_path = "/lakehouse/default/Files/adventureworks_docs_sample.zip"
->
-> extract_path = "/lakehouse/default/Files/extracted_data"
->
-> os.makedirs(extract_path, exist_ok=True)
->
-> with zipfile.ZipFile(zip_path, 'r') as zip_ref:
->
->     zip_ref.extractall(extract_path)
+    ```
+    import zipfile
+    import os
+    
+    zip_path = "/lakehouse/default/Files/adventureworks_docs_sample.zip"
+    extract_path = "/lakehouse/default/Files/extracted_data"
+    
+    os.makedirs(extract_path, exist_ok=True)
+    
+    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+        zip_ref.extractall(extract_path)
+    ```
 
 ![A screenshot of a computer AI-generated content may be
 incorrect.](./media/image18.png)
@@ -186,82 +171,50 @@ incorrect.](./media/image20.png)
 8.  Use the **+ Code** icon below the cell output to add a new code cell
     to the notebook, and enter the following code in it. Click on **▷
     Run cell** button and review the output
-
-> -- Drop tables if they already exist
->
-> DROP TABLE IF EXISTS customers;
->
-> DROP TABLE IF EXISTS employees;
->
-> DROP TABLE IF EXISTS orders;
->
-> DROP TABLE IF EXISTS productcategories;
->
-> DROP TABLE IF EXISTS products;
->
-> DROP TABLE IF EXISTS productsubcategories;
->
-> DROP TABLE IF EXISTS vendorproduct;
->
-> DROP TABLE IF EXISTS vendors;
->
-> -- Create tables from Delta folders
->
-> CREATE TABLE customers
->
-> USING DELTA
->
-> AS SELECT \* FROM
-> delta.\`Files/extracted_data/adventureworks_customers\`;
->
-> CREATE TABLE employees
->
-> USING DELTA
->
-> AS SELECT \* FROM
-> delta.\`Files/extracted_data/adventureworks_employees\`;
->
-> CREATE TABLE orders
->
-> USING DELTA
->
-> AS SELECT \* FROM
-> delta.\`Files/extracted_data/adventureworks_orders\`;
->
-> CREATE TABLE productcategories
->
-> USING DELTA
->
-> AS SELECT \* FROM
-> delta.\`Files/extracted_data/adventureworks_productcategories\`;
->
-> CREATE TABLE products
->
-> USING DELTA
->
-> AS SELECT \* FROM
-> delta.\`Files/extracted_data/adventureworks_products\`;
->
-> CREATE TABLE productsubcategories
->
-> USING DELTA
->
-> AS SELECT \* FROM
-> delta.\`Files/extracted_data/adventureworks_productsubcategories\`;
->
-> CREATE TABLE vendorproduct
->
-> USING DELTA
->
-> AS SELECT \* FROM
-> delta.\`Files/extracted_data/adventureworks_vendorproduct\`;
->
-> CREATE TABLE vendors
->
-> USING DELTA
->
-> AS SELECT \* FROM
-> delta.\`Files/extracted_data/adventureworks_vendors\`;
+  ```
+  -- Drop tables if they already exist
+  DROP TABLE IF EXISTS customers;
+  DROP TABLE IF EXISTS employees;
+  DROP TABLE IF EXISTS orders;
+  DROP TABLE IF EXISTS productcategories;
+  DROP TABLE IF EXISTS products;
+  DROP TABLE IF EXISTS productsubcategories;
+  DROP TABLE IF EXISTS vendorproduct;
+  DROP TABLE IF EXISTS vendors;
+  
+  -- Create tables from Delta folders
+  CREATE TABLE customers
+  USING DELTA
+  AS SELECT * FROM delta.`Files/extracted_data/adventureworks_customers`;
+  
+  CREATE TABLE employees
+  USING DELTA
+  AS SELECT * FROM delta.`Files/extracted_data/adventureworks_employees`;
+  
+  CREATE TABLE orders
+  USING DELTA
+  AS SELECT * FROM delta.`Files/extracted_data/adventureworks_orders`;
+  
+  CREATE TABLE productcategories
+  USING DELTA
+  AS SELECT * FROM delta.`Files/extracted_data/adventureworks_productcategories`;
+  
+  CREATE TABLE products
+  USING DELTA
+  AS SELECT * FROM delta.`Files/extracted_data/adventureworks_products`;
+  
+  CREATE TABLE productsubcategories
+  USING DELTA
+  AS SELECT * FROM delta.`Files/extracted_data/adventureworks_productsubcategories`;
+  
+  CREATE TABLE vendorproduct
+  USING DELTA
+  AS SELECT * FROM delta.`Files/extracted_data/adventureworks_vendorproduct`;
+  
+  CREATE TABLE vendors
+  USING DELTA
+  AS SELECT * FROM delta.`Files/extracted_data/adventureworks_vendors`;
+  ```
 >
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image21.png)
@@ -289,8 +242,6 @@ Graph in Microsoft Fabric uses the same workspace roles as other
 Microsoft Fabric items. The following table summarizes the permissions
 associated with each Microsoft Fabric workspace role's capability on
 graph models.
-
-[TABLE]
 
 To create a graph model in Microsoft Fabric, follow these steps:
 
@@ -391,7 +342,17 @@ use the Adventure Works data model as an example.
     "**Customer"**, the mapping table is "**customers**", and the
     mapping column is "**CustomerID_K**
 
-[TABLE]
+|   |   |  |
+|-----|----|---|
+|Node label	|Mapping table|	Mapping column|
+|Customer	|customers|	CustomerID_K|
+|Order	|orders|	SalesOrderDetailID_K|
+|Employee	|employees	|EmployeeID_K|
+|Product|	products|	ProductID_K|
+|ProductCategory	|productcategories	CategoryID_K|
+|ProductSubcategory|	productsubcategories|	SubcategoryID_K|
+|Vendor	|vendors|	VendorID_K|
+
 
 3.  Select **Confirm** to add the node to your graph.
 
@@ -441,7 +402,36 @@ use the Adventure Works data model as an example.
     node "Order" (SalesOrderDetailID_K). Select **Confirm** to add the
     edge to your graph.
 
-[TABLE]
+|  |    |    |  |
+|---|---|-----|-----| 
+|Edge	|Mapping table	|Source node mapping column	|Target node mapping column|
+|sells	|orders	|Employee                                                                                                                                        EmployeeID_FK|	Order                                                                                                                                            SalesOrderDetailID_K |
+|purchases	orders	Customer
+
+CustomerID_FK	Order
+
+SalesOrderDetailID_K
+contains	orders	Order
+
+SalesOrderDetailID_K	Product
+
+ProductID_FK
+isOfType	products	Product
+
+ProductID_K	ProductSubCategory
+
+SubcategoryID_FK
+belongsTo	productsubcategories	ProductSubCategory
+
+SubcategoryID_K	ProductCategory
+
+CategoryID_FK
+produces	vendorproduct	Vendor
+
+VendorID_FK	Product
+
+ProductID_FK
+
 
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image44.png)
@@ -624,3 +614,4 @@ incorrect.](./media/image68.png)
 >
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image71.png)
+
