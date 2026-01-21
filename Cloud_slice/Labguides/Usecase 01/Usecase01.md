@@ -53,7 +53,11 @@ reports.
     the following URL: +++https://app.fabric.microsoft.com/+++
     then press the **Enter** button and sign in with your credentials
 
-[TABLE]
+    |  |   |
+    |---|----|
+    |Username	|+++@lab.CloudPortalCredential(User1).Username+++|
+    |Password	|+++@lab.CloudPortalCredential(User1).Password+++|
+
 
 2.  In the Workspaces pane, click on **+New workspace** tile
 
@@ -62,8 +66,12 @@ reports.
 
 3.  In the **Create a workspace** pane that appears on the right side,
     enter the following details, and click on the **Apply** button.
+    |  |  |
+    |---|----|
+    |Name	|+++**Fabric IQ OntologyXXXX** +++ (XXXXcan be a unique number)|
+    |Advanced	|Under License mode, select **Fabric capacity**|
+    |Default	|**storage format Small dataset storage format**|
 
-[TABLE]
 
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image2.png)
@@ -293,7 +301,7 @@ database in Eventhouse.
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image45.png)
 >
-> ** Tip:** Ontology names can include numbers, letters, and
+> **Tip:** Ontology names can include numbers, letters, and
 > underscores. Don't use spaces or dashes.
 
 3.  The ontology opens when it's ready.
@@ -320,13 +328,13 @@ database in Eventhouse.
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image47.png)
 
-2.  Enter +++**Store+++ **for the name of your entity type and
+2.  Enter **+++Store+++**for the name of your entity type and
     select **Add Entity Type**.
 
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image48.png)
 
-3.  The *Store* entity type is added to the configuration canvas, and
+3.  The **Store** entity type is added to the configuration canvas, and
     the **Entity type configuration** pane is visible.
 
 > ![A screenshot of a computer AI-generated content may be
@@ -351,17 +359,17 @@ database in Eventhouse.
 
 6.  Configure a static data binding for the following properties.
 
-    1)  For **Binding type**, don't change the default selection
+    a)  For **Binding type**, don't change the default selection
         of **Static**.
 
-    2)  Under **Bind your properties**, the columns from
+    b)  Under **Bind your properties**, the columns from
         the **dimstore** table populate automatically. The **Source
         column** side lists their names in the source data, and
         the **Property name** side lists their corresponding property
         names on the *Store* entity type within ontology. Don't change
         the default property names, which match the source column names.
 
-    3)  Select **Save**.
+    c)  Select **Save**.
 
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image53.png)
@@ -393,7 +401,12 @@ database in Eventhouse.
     entity has a static data binding with the default columns from its
     source table.
 
-[TABLE]
+  |  |   |   |
+  |---|---|---|
+  |Entity type name|	Source table in IQ_Lakehouse	|Entity type key|
+  |+++Products+++|  |dimproducts	|ProductId|
+  |+++SaleEvent+++	|factsales	|SaleId|
+
 
 ![A screenshot of a computer AI-generated content may be
 incorrect.](./media/image58.png)
@@ -469,9 +482,9 @@ contextual connections in your data.
 
 - **Relationship type name**: +++has+++
 
-- **Source entity type**: *Store*
+- **Source entity type**: Store
 
-- **Target entity type**: *SaleEvent*
+- **Target entity type**: SaleEvent
 
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image77.png)
@@ -521,7 +534,11 @@ contextual connections in your data.
 4.  Follow the same steps that you used for the first relationship type
     to create the relationship type described in the following table.
 
-[TABLE]
+|   |   |   |
+|----|----|----|
+|Relationship type name|Source data table|	Source entity type	|Target entity type|
+|+++soldIn+++	|Tutorial workspace >IQ_Lakehose> factsales|	Products For Source column, select ProductId.	SaleEvent|For Source column, select SaleId.|
+
 
 ![A screenshot of a computer AI-generated content may be
 incorrect.](./media/image80.png)
@@ -553,7 +570,7 @@ new ***Freezer* **entity type. This entity type adds more domain context
 and introduces properties for time series data, which reflects live
 operational information.
 
-** Note**
+**Note**
 
 For both static and time series data, you can create properties without
 binding data and bind data later, or create properties and bind data to
@@ -585,9 +602,16 @@ properties to it. The properties aren't bound to data yet.
 
 3.  Add the following properties and select **Save**.
 
-[TABLE]
+    |    |  |   |
+    |----|----|---|
+    |Name	|Value type	|Property type|
+    |FreezerId	|String	|Static|
+    |Model	|String	|Static|
+    |minSafeTempC|	Double|	Static|
+    |StoreId	|String|Static|
 
-**Note:**Property names must be unique across all entity types.
+
+**Note**Property names must be unique across all entity types.
 
 ![A screenshot of a computer AI-generated content may be
 incorrect.](./media/image89.png)
@@ -628,13 +652,13 @@ the *Freezer* entity type.
 
 4.  Configure a static data binding for the properties.
 
-    1.  For **Binding type**, use the default selection of **Static**.
+    a.  For **Binding type**, use the default selection of **Static**.
 
-    2.  Under **Bind your properties**, the properties you created
+    b.  Under **Bind your properties**, the properties you created
         populate automatically with links to matching columns from
         the *freezer* table.
 
-    3.  Select **Save**.
+    c.  Select **Save**.
 
 ![A screenshot of a computer AI-generated content may be
 incorrect.](./media/image95.png)
@@ -713,11 +737,11 @@ between a store and its freezers.
 2.  Enter the following relationship type details and select **Add
     relationship type**.
 
-    1.  **Relationship type name**: *operates*
+    1.  **Relationship type name**: operates
 
-    2.  **Source entity type**: *Store*
+    2.  **Source entity type**: Store
 
-    3.  **Target entity type**: *Freezer*
+    3.  **Target entity type**: Freezer
 
 ![A screenshot of a computer AI-generated content may be
 incorrect.](./media/image104.png)
@@ -875,7 +899,7 @@ incorrect.](./media/image123.png)
 First, craft this query: *Show all freezers that are operated in the
 Paris store.*
 
-2.  In the *Store* entity's relationship graph, select **Add filter \>
+2.  In the **Store** entity's relationship graph, select **Add filter \>
     Store \> StoreId** from the query builder ribbon.
 
 ![A screenshot of a computer AI-generated content may be
@@ -908,8 +932,8 @@ store.](./media/image127.png)
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image129.png)
 
-Next, craft this query: *Show all stores that have made a sale with a
-revenue greater than 150.*
+Next, craft this query: **Show all stores that have made a sale with a
+revenue greater than 150.**
 
 7.  Select **Add a node** and add a node for **SaleEvent.**
 
@@ -989,7 +1013,8 @@ incorrect.](./media/image138.png)
 > incorrect.](./media/image141.png)
 
 5.  In the OneLake catalog tab, select the **RetailSalesOntology**
-    Ontology and select **Add.** ![A screenshot of a computer
+    Ontology and select **Add.**
+     ![A screenshot of a computer
     AI-generated content may be incorrect.](./media/image142.png)
 
 > When the agent is ready, it opens.
@@ -1040,7 +1065,7 @@ incorrect.](./media/image148.png)
 2.  Enter the following text and click on the **Submit icon** as shown
     in the below image.
 
-> *+++What is the top product by revenue across all stores?+++*
+> **+++What is the top product by revenue across all stores?+++**
 
 ![A screenshot of a chat AI-generated content may be
 incorrect.](./media/image149.png)
@@ -1049,7 +1074,7 @@ incorrect.](./media/image149.png)
 incorrect.](./media/image150.png)
 
 > Notice that the responses reference entity types
-> (*Store*, *Products*, *Freezer*) and their relationships, not just raw
+> (**Store**, **Products**, **Freezer**) and their relationships, not just raw
 > tables.
 >
 > ![Screenshot of the result of a query.](./media/image151.png)
@@ -1102,3 +1127,4 @@ without requiring users to understand underlying tables or schemas.
 Overall, this use case shows how Fabric IQ Ontology helps bridge
 operational data and analytics, supporting smarter decision-making
 across domains.
+
