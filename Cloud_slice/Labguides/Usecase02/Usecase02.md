@@ -550,8 +550,7 @@ use the Adventure Works data model as an example.
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image66.png)
 
-6.  Enter a GQL query into the input field, such as +++MATCH
-    (n:\`Order\`) RETURN count(n) AS num_orders+++. Select **Run
+6.  Enter a GQL query into the input field, such as +++MATCH (n:`Order`) RETURN count(n) AS num_orders+++. Select **Run
     query** to execute the query.
 
 ![A screenshot of a computer AI-generated content may be
@@ -570,24 +569,16 @@ incorrect.](./media/image68.png)
     limiting:
 
 > gql
->
-> MATCH
-> (v:Vendor)-\[:produces\]-\>(p:\`Product\`)-\>(sc:\`ProductSubcategory\`)-\>(c:\`ProductCategory\`),
->
-> (o:\`Order\`)-\[:\`contains\`\]-\>(p)
->
-> FILTER c.categoryName = 'Components'
->
-> LET vendorName = v.vendorName, subCategoryName = sc.subCategoryName
->
-> RETURN vendorName, subCategoryName, count(p) AS num_products, count(o)
-> AS num_orders
->
-> GROUP BY vendorName, subCategoryName
->
-> ORDER BY num_orders DESC
->
-> LIMIT 5
+```
+MATCH (v:Vendor)-[:produces]->(p:`Product`)->(sc:`ProductSubcategory`)->(c:`ProductCategory`), 
+      (o:`Order`)-[:`contains`]->(p)
+FILTER c.categoryName = 'Components'
+LET vendorName = v.vendorName, subCategoryName = sc.subCategoryName
+RETURN vendorName, subCategoryName, count(p) AS num_products, count(o) AS num_orders
+GROUP BY vendorName, subCategoryName
+ORDER BY num_orders DESC
+LIMIT 5
+```
 >
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image70.png)
@@ -595,4 +586,9 @@ incorrect.](./media/image68.png)
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image71.png)
 
+**Summary**
+
+In this use case, you implemented a complete end-to-end graph analytics solution using Microsoft Fabric IQ. Starting from raw retail data stored in OneLake, you created a Lakehouse, modeled business entities as nodes, and defined meaningful relationships using edges. Once the graph was loaded, you explored it interactively using visual queries and advanced GQL statements.
+
+This approach demonstrates how graph analytics enables deeper understanding of interconnected data—revealing hidden patterns across customers, products, vendors, and orders. By leveraging Microsoft Fabric Graph, organizations can move beyond flat tables and gain relationship-driven insights that enhance decision-making in areas such as sales analysis, supplier impact assessment, and customer behavior exploration
 
