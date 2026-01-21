@@ -402,35 +402,15 @@ use the Adventure Works data model as an example.
     node "Order" (SalesOrderDetailID_K). Select **Confirm** to add the
     edge to your graph.
 
-|  |    |    |  |
-|---|---|-----|-----| 
-|Edge	|Mapping table	|Source node mapping column	|Target node mapping column|
-|sells	|orders	|Employee                                                                                                                                        EmployeeID_FK|	Order                                                                                                                                            SalesOrderDetailID_K |
-|purchases	orders	Customer
+| Edge        | Mapping table         | Source node | Source node mapping column | Target node | Target node mapping column |
+|-------------|-----------------------|-------------|-----------------------------|-------------|-----------------------------|
+| sells       | orders                | Employee    | EmployeeID_FK               | Order       | SalesOrderDetailID_K        |
+| purchases   | orders                | Customer    | CustomerID_FK               | Order       | SalesOrderDetailID_K        |
+| contains    | orders                | Order       | SalesOrderDetailID_K        | Product     | ProductID_FK                |
+| isOfType    | products              | Product     | ProductID_K                 | ProductSubCategory | SubcategoryID_FK     |
+| belongsTo   | productsubcategories  | ProductSubCategory | SubcategoryID_K     | ProductCategory | CategoryID_FK        |
+| produces    | vendorproduct         | Vendor      | VendorID_FK                 | Product     | ProductID_FK                |
 
-CustomerID_FK	Order
-
-SalesOrderDetailID_K
-contains	orders	Order
-
-SalesOrderDetailID_K	Product
-
-ProductID_FK
-isOfType	products	Product
-
-ProductID_K	ProductSubCategory
-
-SubcategoryID_FK
-belongsTo	productsubcategories	ProductSubCategory
-
-SubcategoryID_K	ProductCategory
-
-CategoryID_FK
-produces	vendorproduct	Vendor
-
-VendorID_FK	Product
-
-ProductID_FK
 
 
 > ![A screenshot of a computer AI-generated content may be
@@ -614,4 +594,5 @@ incorrect.](./media/image68.png)
 >
 > ![A screenshot of a computer AI-generated content may be
 > incorrect.](./media/image71.png)
+
 
