@@ -510,9 +510,9 @@ incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs
     1.  **Target entity type \Source column**: Select SaleId. This
         setting specifies the column in the relationship source data
         table whose values match the key property defined on
-        the *SaleEvent* entity. In this case, the relationship data
+        the **SaleEvent** entity. In this case, the relationship data
         source and the entity data source both use
-        the *factsales* table, so you're selecting the same column.
+        the **factsales** table, so you're selecting the same column.
 
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image78.png)
@@ -548,7 +548,7 @@ incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image83.png)
 
 	When you're done, you have two relationships targeting
-	the ***SaleEvent* **entity type. To see the relationships, select
+	the **SaleEvent** entity type. To see the relationships, select
 	the **SaleEvent** entity type from the **Entity Types** pane. You see
 	its relationships on the configuration canvas.
 
@@ -598,10 +598,10 @@ incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs
     |    |  |   |
     |----|----|---|
     |Name	|Value type	|Property type|
-    |FreezerId	|String	|Static|
-    |Model	|String	|Static|
-    |minSafeTempC|	Double|	Static|
-    |StoreId	|String|Static|
+    |+++FreezerId+++	|String	|Static|
+    |+++Model+++	|String	|Static|
+    |+++minSafeTempC+++|	Double|	Static|
+    |+++StoreId+++	|String|Static|
 
 
 	>[!Note]: Property names must be unique across all entity types.
@@ -679,7 +679,7 @@ incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image98.png)
 
-3.  Select the **freezer** table from the **IQ_Lakehouse** data source,
+3.  Select the **Freezer Telemetry** table from the **IQ_Lakehouse** data source,
     then click **Next** to proceed to the data binding step.
 
     ![A screenshot of a computer AI-generated content may be
@@ -699,7 +699,7 @@ incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image100.png)
 
 3.  Under **Bind your properties \Timeseries**, the time series
-    columns from the **FreezerTelemetry **table populate automatically
+    columns from the **FreezerTelemetry**table populate automatically
     with matching property names for the *Freezer* entity type. Keep the
     default selections.
 
@@ -730,7 +730,7 @@ incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs
 2.  Enter the following relationship type details and select **Add
     relationship type**.
 
-    1.  **Relationship type name**: operates
+    1.  **Relationship type name**: +++operates+++
 
     2.  **Source entity type**: Store
 
@@ -762,9 +762,9 @@ incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs
 
 3.  **Target entity type \Source column**: Select FreezerId. This
     setting specifies the column in the relationship source data table
-    whose values match the key property defined on the *Freezer* entity.
+    whose values match the key property defined on the **Freezer** entity.
     In this case, the relationship data source and the entity data
-    source both use the *freezer* table, so you're selecting the same
+    source both use the **freezer** table, so you're selecting the same
     column.
 
     ![A screenshot of a computer AI-generated content may be
@@ -791,7 +791,7 @@ ontology automatically created instances of those entities that are tied
 to the source data rows. In this section, you use the preview experience
 to view those entity instances.
 
-1.  Select the **SaleEvent **entity type, and select **Entity type
+1.  Select the **SaleEvent** entity type, and select **Entity type
     overview** from the top ribbon.
 
     ![A screenshot of a computer AI-generated content may be
@@ -808,7 +808,7 @@ incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs
 
 3.  Scroll down to the **Entity instances** section. Verify that it
     shows entity instances, with unit counts and revenue populated from
-    the *factsales* lakehouse table.
+    the **factsales** lakehouse table.
 
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image112.png)
@@ -842,14 +842,14 @@ The preview experience also contains a **Relationship graph**, which you
 use to visualize your ontology in a graph of nodes and edges.
 
 1.  Use the tabs across the top of the preview experience to reopen
-    the *SaleEvent* entity type. In the **Relationship graph** tile,
+    the **SaleEvent** entity type. In the **Relationship graph** tile,
     select **Expand**.
 
     ![A screenshot of a graph AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image116.png)
 
 2.  In the **graph**, observe the details of the relationships to
-    the **SaleEvent **entity type from **Store **and ***Products*.**
+    the **SaleEvent** entity type from **Store **and ***Products*.**
 
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image117.png)
@@ -864,8 +864,8 @@ incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image119.png)
 
 4.  In the graph, observe the relationship
-    between **Store** and ***SaleEvent*,** and the relationship
-    between **Store** and ***Freezer*.**
+    between **Store** and ***SaleEvent**, and the relationship
+    between **Store** and ***Freezer**.
 
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image120.png)
@@ -1119,3 +1119,4 @@ without requiring users to understand underlying tables or schemas.
 Overall, this use case shows how Fabric IQ Ontology helps bridge
 operational data and analytics, supporting smarter decision-making
 across domains.
+
