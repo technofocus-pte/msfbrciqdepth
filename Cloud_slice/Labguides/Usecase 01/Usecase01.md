@@ -95,8 +95,7 @@ incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image6.png)
 
-3.  In the **New lakehouse** dialog box, enter +++IQ_Lakehouse@lab.LabInstance.Id+++ in the **Name** field and **unselect** the lakehouses schemas.
-    Click on the **Create** button and open the new lakehouse.
+3.  In the **New lakehouse** dialog box, enter +++IQ_Lakehouse@lab.LabInstance.Id+++ in the **Name** field and **unselect** the lakehouses schemas.Click on the **Create** button and open the new lakehouse.
 
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image7.png)
@@ -124,7 +123,7 @@ incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image11.png)
 
-3.  Browse to **C:\LabFiles\LabFiles** on your VM, then
+3.  Browse to **C:\Lab Files\Cloud_slice\LabFiles\Lab1** on your VM, then
     select **DimProducts.csv, DimStore.csv, FactSale.csv** and
     **Freezer.csv** file and click on **Open** button.
 
@@ -234,11 +233,12 @@ incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs
 
 5.  On the lower ribbon of your **KQL database**, click on **Get data**,
     then select **Local file** to upload files from your local system
-    into the database.    ![A screenshot of a computer AI-generated content
+    into the database.
+    ![A screenshot of a computer AI-generated content
     may be incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image34.png)
 
-6.  Select the target option to ingest data into a new table, click +
-    New table, and enter a table name as +++FreezerTelemetry+++.
+7.  Select the target option to ingest data into a new table, click +
+    New table, and enter a table name as +++**FreezerTelemetry**+++.
 
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image35.png)
@@ -246,40 +246,40 @@ incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image36.png)
 
-7.  Select the destination table, then drag and drop the files or click
+8.  Select the destination table, then drag and drop the files or click
     *Browse for files* to upload the data.
 
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image37.png)
 
-8.  Browse to **C:\LabFiles\Lab1** on your VM, then
+9.  Browse to **C:\Lab Files\Cloud_slice\LabFiles\Lab1** on your VM, then
     select ***FreezerTelemetry*.csv** file and click on **Open** button.
 
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image38.png)
 
-9.  Click on **Next** button
+10.  Click on **Next** button
 
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image39.png)
 
-10. Then click on the **Finish** button.
+11. Then click on the **Finish** button.
 
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image40.png)
 
-11. Wait for the Data ingestion to be completed, and click **Close**.
+12. Wait for the Data ingestion to be completed, and click **Close**.
 
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image41.png)
 
-12. The KQL database shows the **FreezerTelemetry** table when you're
+13. The KQL database shows the **FreezerTelemetry** table when you're
     done:
 
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image42.png)
 
-13. Select **Fabric IQ Ontology** in the left navigation pane.
+14. Select **Fabric IQ Ontology** in the left navigation pane.
 
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image43.png)
@@ -294,7 +294,7 @@ incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image44.png)
 
-2.  Enter +++RetailSalesOntology+++ for the **Name** of your
+2.  Enter +++**RetailSalesOntology**+++ for the **Name** of your
     ontology and select **Create**.
 
     ![A screenshot of a computer AI-generated content may be
@@ -314,7 +314,7 @@ data from your lakehouse tables.
 ## Task 2: Create entity types and data bindings
 
 First, create entity types. Entity types represent types of objects in
-a business. This step has three entity types: *Store*, *Products*,
+a business. This step has three entity types: **Store**, **Products**,
 and *SaleEvent*. After you create the entity types, create their
 properties by binding source data columns in
 the ***IQ_Lakehouse*** lakehouse tables.
@@ -327,7 +327,7 @@ the ***IQ_Lakehouse*** lakehouse tables.
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image47.png)
 
-2.  Enter +++Store+++for the name of your entity type and
+2.  Enter +++**Store**+++for the name of your entity type and
     select **Add Entity Type**.
 
     ![A screenshot of a computer AI-generated content may be
@@ -345,8 +345,7 @@ incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image50.png)
 
-5.  Next, choose your data source.Select
-    the **OntologyDataLH** lakehouse and select **Connect**.
+5.  Next, choose your data source.Select the **IQ_Lakehouse** lakehouse and select **Connect**.
 
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image51.png)
@@ -632,18 +631,18 @@ the *Freezer* entity type.
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image92.png)
 
-2.  From **OneLake catalog**, select the **TelemetryDataEH** Eventhouse
-    and click **Connect** to establish the data connection.    ![A
-    screenshot of a computer AI-generated content may be
+2.  From **OneLake catalog**, select the **IQ_Lakehouse** Lakehouse
+    and click **Connect** to establish the data connection.
+     ![A screenshot of a computer AI-generated content may be
     incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image93.png)
 
-3.  Select the **freezer** table from the **IQ_Lakehouse** data source,
+4.  Select the **freezer** table from the **IQ_Lakehouse** data source,
     then click **Next** to proceed to the data binding step
 
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image94.png)
 
-4.  Configure a static data binding for the properties.
+5.  Configure a static data binding for the properties.
 
     a.  For **Binding type**, use the default selection of **Static**.
 
@@ -656,7 +655,7 @@ incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image95.png)
 
-5.  Now the **Freezer** entity has static data bound to it.
+6.  Now the **Freezer** entity has static data bound to it.
 
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image96.png)
@@ -679,7 +678,7 @@ incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs
     ![A screenshot of a computer AI-generated content may be
 incorrect.](https://raw.githubusercontent.com/technofocus-pte/msfbrciqdepth/refs/heads/main/Cloud_slice/Labguides/Usecase%2001/media/image98.png)
 
-3.  Select the **Freezer Telemetry** table from the **IQ_Lakehouse** data source,
+3.  Select the **Freezer Telemetry** table from the **TelemetryDataEH data source** data source,
     then click **Next** to proceed to the data binding step.
 
     ![A screenshot of a computer AI-generated content may be
@@ -1119,4 +1118,5 @@ without requiring users to understand underlying tables or schemas.
 Overall, this use case shows how Fabric IQ Ontology helps bridge
 operational data and analytics, supporting smarter decision-making
 across domains.
+
 
